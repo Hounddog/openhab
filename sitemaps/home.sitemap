@@ -1,0 +1,39 @@
+sitemap home label="Home" {
+    Frame label="Erdgeschoss" icon="groundfloor" {
+        Group item=GF_Bedroom
+        Group item=GF_LivingRoom
+        Group item=GF_Kitchen
+        Group item=GF_Bathroom
+        Group item=GF_Boiler
+        Group item=GF_StorageRoom
+    }
+
+    Frame label="Erster Stock" icon="firstfloor" {
+        Group item=FF_GuestRoom
+        Group item=FF_Bedroom
+        Group item=FF_KidsRoom
+        Group item=FF_Office
+        Group item=FF_LivingRoom
+        Group item=FF_Kitchen
+        Group item=FF_Bathroom
+        Group item=FF_Terrace
+    }
+
+    Frame {
+        Text label="Rolladen" icon="rollershutter" {
+            Default item=FF_Office_Shutter label="Büro"
+            Default item=FF_LivingRoom_Shutter label="Wohnzimmer"
+        }
+
+        Text label="Heizung" icon="heating" {
+            Default item=FF_Bedroom_Heating label="Schlafzimmer"
+            Default item=FF_KidsRoom_Heating label="Kinderzimmer"
+            Default item=FF_Office_Heating label="Büro"
+        }
+
+        Text label="Fenster" icon="window" {
+            Default item=FF_Bedroom_Window label="Schlafzimmer"
+            Default item=FF_KidsRoom_Window label="Kinderzimmer"
+        }
+    }
+}

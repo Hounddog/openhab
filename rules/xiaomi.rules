@@ -1,0 +1,14 @@
+rule "Cube_Action"
+
+when
+    Item Cube_Action changed
+then
+    if (Cube_Action.state.toString == "rotate_left")
+    {
+        logInfo("Cube_Action", "received action to rotate left")
+        sendCommand(gShutter, UP)
+    } else if (Cube_Action.state.toString == "rotate_right") {
+        sendCommand(gShutter, DOWN)
+    }
+ 
+end

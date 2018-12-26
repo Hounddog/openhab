@@ -1,0 +1,12 @@
+rule "Shutters"
+
+when
+    Item Rollos received command
+then
+    if (receivedCommand == ON)
+    {
+        sendCommand(gShutter, UP)
+    } else {
+        sendCommand(gShutter, DOWN)
+    }
+end

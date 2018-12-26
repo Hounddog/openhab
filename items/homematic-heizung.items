@@ -1,0 +1,29 @@
+Group                     Heating_Group          "Heizung Gesamt"                               <heating>         (Home)
+Group                     Heating_WZ             "Heizung Wohnzimmer"                           <heating>         (Heating_Group) ["Thermostat"]
+Group                     Heating_KU             "Heizung Flur/Küche"                           <heating>         (Heating_Group) ["Thermostat"]
+Group                     Heating_SZ             "Heizung Schlafzimmer"                         <heating>         (Heating_Group) ["Thermostat"]
+Group                     Heating_BD             "Heizung Bad"                                  <heating>         (Heating_Group) ["Thermostat"]
+Group:Number:AVG          Heating_TargetTemps    "Raumtemperaturen Soll [%.1f °C]"              <temperature>     (Heating_Group)
+Group:Switch:OR(ON, OFF)  Heating_ValveSettings  "Aktive Heizkörper [%d]"                       <heating>         (Heating_Group)
+Group                     Heating_OpModes        "Raumtemperaturen Mode [%.1f °C]"              <"heating-off">   (Heating_Group)
+Group:Number:AVG          Heating_TargetPresets  "Raumtemperaturen Soll Zeitprogramm [%.1f °C]" <line>            (Heating_Group)
+Group:Number:SUM          Heating_WindowModes    "Fensterabsenkung"                             <window>          (Heating_Group)
+
+// HM-CC-RT-DN Heizkörperthermostat
+Number WZ_Heizung_RSSI              "WZ_Heizung RSSI [%d dBm]"                                  <"signal-3">      (Heating_WZ,RSSI_Group)               {channel="homematic:HM-CC-GF-LR:ccu:OEQ0238393:0#RSSI_DEVICE"}
+Switch WZ_Heizung_Unreach           "WZ_Heizung unreachable"                                    <siren>           (Heating_WZ,Unreach_Group)            {channel="homematic:HM-CC-GF-LR:ccu:OEQ0238393:0#UNREACH"}
+Switch WZ_Heizung_Pending           "WZ_Heizung config pending"                                 <siren>           (Heating_WZ,Pending_Group)            {channel="homematic:HM-CC-GF-LR:ccu:OEQ0238393:0#CONFIG_PENDING"}
+Number WZ_Heizung_Battery           "WZ_Heizung Batteriezustand [%.1f V]"                       <"battery-100">   (Heating_WZ,Bat_Volts)                {channel="homematic:HM-CC-GF-LR:ccu:OEQ0238393:4#BATTERY_STATE"}
+String WZ_Heizung_Fault             "WZ_Heizung Fehlerwert [MAP(HM-CC-RT-DN.map):%s]"           <error2>          (Heating_WZ,Error_Group)              {channel="homematic:HM-CC-GF-LR:ccu:OEQ0238393:4#FAULT_REPORTING"}
+Number WZ_Heizung_ActTemp           "WZ_Heizung Ist-Temperatur [%.1f °C]"                       <temperature>     (Heating_WZ,WZ,Temperatures)          {channel="homematic:HM-CC-GF-LR:ccu:OEQ0238393:4#ACTUAL_TEMPERATURE"}
+Number WZ_Heizung_SetTemp           "WZ_Heizung Soll-Temperatur [%.1f °C]"                      <temperature>     (Heating_WZ,WZ,Heating_TargetTemps)   {channel="homematic:HM-CC-GF-LR:ccu:OEQ0238393:4#SET_TEMPERATURE"}
+Number WZ_Heizung_Valve             "WZ_Heizung Ventilstellung [%d %%]"                         <heating>         (Heating_WZ,WZ,Heating_ValveSettings) {channel="homematic:HM-CC-GF-LR:ccu:OEQ0238393:4#VALVE_STATE"}
+String WZ_Heizung_Mode              "WZ_Heizung Betriebsart [MAP(HM-CC-RT-DN.map):%s]"          <"heating-off">   (Heating_WZ,WZ,Heating_OpModes)       {channel="homematic:HM-CC-GF-LR:ccu:OEQ0238393:4#CONTROL_MODE"}
+Switch WZ_Heizung_Auto              "WZ_Heizung Auto-Mode"                                      <temperature>     (Heating_WZ)                          {channel="homematic:HM-CC-GF-LR:ccu:OEQ0238393:4#AUTO_MODE"}
+Number WZ_Heizung_Manu              "WZ_Heizung Manu-Mode [%.1f °C]"                            <"heating-40">    (Heating_WZ)                          {channel="homematic:HM-CC-GF-LR:ccu:OEQ0238393:4#MANU_MODE"}
+Switch WZ_Heizung_BoostMode         "WZ_Heizung Boost-Mode"                                     <fire>            (Heating_WZ)                          {channel="homematic:HM-CC-GF-LR:ccu:OEQ0238393:4#BOOST_MODE"}
+Number WZ_Heizung_BoostTime         "WZ_Heizung Boost-Restdauer [%d min]"                       <"clock-on">      (Heating_WZ)                          {channel="homematic:HM-CC-GF-LR:ccu:OEQ0238393:4#BOOST_STATE"}
+Switch WZ_Heizung_WindowMode        "WZ_Heizung Fensterabsenkung"                               <window>          (Heating_WZ,WZ,Heating_WindowModes)
+Number WZ_Heizung_Preset            "WZ_Heizung Soll-Temperatur Schnellauswahl"                 <"heating-60">    (Heating_WZ)
+Number WZ_Heizung_PresetTemp        "WZ_Heizung Soll-Temperatur Zeitprogramm [%.1f °C]"         <line>            (Heating_WZ,Heating_TargetPresets)
+String WZ_Heizung_Summary           "WZ_Heizung Übersicht [%s]"                                 <thermometer_red> (Heating_WZ,WZ)

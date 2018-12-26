@@ -1,0 +1,20 @@
+//Maingroup Home
+Group           Home                    "Home"           <house>
+
+Group           GF                      "Erdgeschoss"    <groundfloor>     (Home)
+Group           FF                      "Erster Stock"   <firstfloor>      (Home)
+
+Group           GF_Bedroom              "Schlafzimmer"   <bedroom>         (Home, GF)
+Group           GF_LivingRoom           "Wohnzimmer"     <sofa>            (Home, GF)
+Group           GF_Kitchen              "Küche"          <kitchen>         (Home, GF)
+Group           GF_Bathroom             "Badezimmer"     <bath>            (Home, GF)
+Group           GF_Boiler               "Heizungsraum"   <gas>             (Home, GF)
+Group           GF_StorageRoom          "Lagerraum"      <suitcase>        (Home, GF)
+Group           FF_GuestRoom            "Gästezimmer"    <parents_4_3>     (Home, FF)
+Group           FF_Bedroom              "Schlafzimmer"   <bedroom>         (Home, FF)
+Group           FF_KidsRoom             "Kinderzimmer"   <girl_3>          (Home, FF)
+Group           FF_Office               "Büro"           <office>          (Home, FF)
+Group           FF_LivingRoom           "Wohnzimmer"     <sofa>            (Home, FF)
+Group           FF_Kitchen              "Küche"          <kitchen>         (Home, FF)
+Group           FF_Bathroom             "Badezimmer"     <bath>            (Home, FF)
+Group           FF_Terrace              "Terrasse"       <terrace>         (Home, FF)
