@@ -1,0 +1,16 @@
+val String filename = "kamin.rules"
+
+rule "Heizung schalten wenn kamin an/aus"
+when
+    Item THPS_TEMP received update
+then
+	logInfo(filename, "Wohnzimmer temperatur: " + THPS_TEMP.state)
+	if (THPS_TEMP.state > 25)
+    {
+        WZ_Heizung_Manu.sendCommand(15.0)
+        logInfo(filename, "Wohnzimmer Heizung aus")
+    } else {
+    	WZ_Heizung_Manu.sendCommand(21.0)
+        logInfo(filename, "Wohnzimmer Heizung an")
+    }
+end

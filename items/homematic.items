@@ -1,14 +1,7 @@
-//Group           Heating_Group           "Heizung Gesamt" <heating>         (Home)
+Group:Rollershutter:OR(UP, DOWN)   Shutter_Group   "Rolladen"   <rollershutter>   (Home)
+Group:Contact:OR(OPEN, CLOSED)     Window_Group    "Fenster"    <window>          (Home)
 
-//Number        FF_Bedroom_Heating      "Heizung"        <heating>         (FF_Bedroom, gHeating)         {channel=""}
-//Contact       FF_Bedroom_Window       "Fenster"        <window>          (FF_Bedroom, gWindow)          {channel=""}
-Rollershutter	FF_LR_Shutter_Small     "Kleines Wohnzimmer Rollo"	<rollershutter>   (FF_LivingRoom, gShutter)	["Switchable"]   {channel="homematic:HmIP-BROLL:ccu:0011170999EC7D:4#LEVEL"}
-Rollershutter   FF_LR_Shutter_Big   	"Großes Wohnzimmer Rollo" 	<rollershutter>   (FF_LivingRoom, gShutter)   ["Switchable"]   {channel="homematic:HM-LC-Bl1PBU-FM:ccu:OEQ0892543:1#LEVEL"}
-
-Group:Rollershutter:OR(UP, DOWN)   gShutter   "Rolladen"   <rollershutter>   (Home)
-Group:Number:AVG                   gHeating   "Heizung"    <heating>         (Home)
-Group:Contact:OR(OPEN, CLOSED)     gWindow    "Fenster"    <window>          (Home)
+Rollershutter	FF_LR_Shutter_Small     "Kleines Wohnzimmer Rollo"	<rollershutter>   (LivingRoom, Shutter_Group)   ["Switchable"]   {channel="homematic:HmIP-BROLL:ccu:0011170999EC7D:4#LEVEL"}
+Rollershutter   FF_LR_Shutter_Big   	"Großes Wohnzimmer Rollo" 	<rollershutter>   (LivingRoom, Shutter_Group)   ["Switchable"]   {channel="homematic:HM-LC-Bl1PBU-FM:ccu:OEQ0892543:1#LEVEL"}
 
 Switch Rollos "Shutters" [ "Lighting" ]
-
-

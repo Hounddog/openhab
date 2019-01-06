@@ -1,39 +1,73 @@
 sitemap home label="Home" {
-    Frame label="Erdgeschoss" icon="groundfloor" {
-        Group item=GF_Bedroom
-        Group item=GF_LivingRoom
-        Group item=GF_Kitchen
-        Group item=GF_Bathroom
-        Group item=GF_Boiler
-        Group item=GF_StorageRoom
+    Frame label="" {
+        Text label="Erdgeschoss" icon="groundfloor"{
+            Text label="Wohnzimmer" icon="sofa"{
+                Text item=THPS_TEMP label="Aktuelle Temperatur [%.1f °C]"
+                Default item=FF_LR_Shutter_Small label="Wohnzimmer Groß"
+                Default item=FF_LR_Shutter_Big label="Wohnzimmer Klein"
+            }
+        }
     }
 
+    //Frame label="Erdgeschoss" icon="groundfloor" {
+    //      Group item=GF_Bedroom
+    //    Group item=GF_LivingRoom
+    //    Group item=GF_Kitchen
+    //    Group item=GF_Bathroom
+    //    Group item=GF_Boiler
+    //    Group item=GF_StorageRoom
+    //}
+
     Frame label="Erster Stock" icon="firstfloor" {
-        Group item=FF_GuestRoom
-        Group item=FF_Bedroom
-        Group item=FF_KidsRoom
-        Group item=FF_Office
-        Group item=FF_LivingRoom
-        Group item=FF_Kitchen
-        Group item=FF_Bathroom
-        Group item=FF_Terrace
+    //      Group item=FF_GuestRoom
+    //    Group item=FF_Bedroom
+    //    Group item=FF_KidsRoom
+    //    Group item=FF_Office
+          Group item=LivingRoom label="Wohnzimmer" icon="sofa"
+    //    Group item=FF_Kitchen
+    //    Group item=FF_Bathroom
+    //    Group item=FF_Terrace
     }
 
     Frame {
-        Text label="Rolladen" icon="rollershutter" {
-            Default item=FF_Office_Shutter label="Büro"
-            Default item=FF_LivingRoom_Shutter label="Wohnzimmer"
-        }
+        Group item=Shutter_Group
 
         Text label="Heizung" icon="heating" {
-            Default item=FF_Bedroom_Heating label="Schlafzimmer"
-            Default item=FF_KidsRoom_Heating label="Kinderzimmer"
-            Default item=FF_Office_Heating label="Büro"
+            Default item=THPS_TEMP label="Wohnzimmer"
         }
+    }
 
-        Text label="Fenster" icon="window" {
-            Default item=FF_Bedroom_Window label="Schlafzimmer"
-            Default item=FF_KidsRoom_Window label="Kinderzimmer"
+    Frame label="Temperaturen und Heizung" {
+        //
+        Selection item=Whg_Heating_Mode label="Heizmodus (Wohnung) []" mappings=[NORMAL="Normal",
+            PARTY="Party",
+            SICKDAY="Krankheitstag",
+            WEEKEND_TRIP="Wochenendtrip",
+            AWAY="Unterwegs",
+            OFF_SUMMER="Aus (Sommer-Standby)"
+        ]
+        // Overrides only the text, but will keep the state format from the Item definition
+        Text item=THPS_TEMP label="Livingroom"
+
+        Text label="Wohnzimmer Heizstellglied [N/A ✘]" icon="error2" visibility=[WZ_Heizung_Unreach != OFF] valuecolor=["maroon"]
+        Text item=WZ_Heizung_Fault label="Wohnzimmer [MAP(HM-CC-RT-DN.map):%s]" visibility=[WZ_Heizung_Fault != NO_FAULT] valuecolor=["maroon"]
+        Text item=WZ_Heizung_Summary label="Wohnzimmer [%s]" visibility=[WZ_Heizung_Unreach == OFF] {
+            Frame label="Temperatur" {
+                Text item=WZ_Heizung_ActTemp label="Aktuelle Temperatur [%.1f °C]"
+            }
+            Frame label="Heizung" {
+                Setpoint item=WZ_Heizung_SetTemp label="Stellwert (±1) [%.1f °C]" minValue=4.5 maxValue=30.5 step=1.0 visibility=[WZ_Heizung_SetTemp > 4.5]
+                Setpoint item=WZ_Heizung_SetTemp label="Stellwert (±½) [%.1f °C]" minValue=4.5 maxValue=30.5 step=0.5 visibility=[WZ_Heizung_SetTemp > 4.5]
+                Switch item=WZ_Heizung_SetTemp label="Stellglied [OFF]" mappings=[5.0=Einschalten] visibility=[WZ_Heizung_SetTemp == 4.5]
+                Switch item=WZ_Heizung_Preset label="Schnellwahl" mappings=[0="Abgesenkt", 1="Komfort", 2="Warm"]
+                Switch item=WZ_Heizung_BoostMode label="Boost (5min)" mappings=[ON="Starten"]
+                Text item=WZ_Heizung_BoostTime label="Boost-Restzeit [%d min]" visibility=[WZ_Heizung_BoostTime > 0]
+                Text item=WZ_Heizung_Valve label="Ventilstellung [%d %%]"
+            }
         }
+    }
+    
+    Frame label="Demo" {
+        Group item=Shutter_Group
     }
 }

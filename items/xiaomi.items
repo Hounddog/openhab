@@ -2,8 +2,6 @@ Number THPS_TEMP "THPS Temperature [%.1f °C]"  <temperature>  {mqtt="<[broker:z
 Number THPS_HUM "THPS Humidity"  <humidity>  {mqtt="<[broker:zigbee2mqtt/temperature:state:JSONPATH($.humidity)]"}
 Number THPS_PRESSURE "THPS Pressure"  <pressure>  {mqtt="<[broker:zigbee2mqtt/temperature:state:JSONPATH($.pressure)]"}
 
-
-
 String Cube_Action  {mqtt="<[broker:zigbee2mqtt/cube:state:JSONPATH($.action)]"}
 
 

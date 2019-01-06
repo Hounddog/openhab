@@ -14,7 +14,10 @@ Group           FF_GuestRoom            "Gästezimmer"    <parents_4_3>     (Hom
 Group           FF_Bedroom              "Schlafzimmer"   <bedroom>         (Home, FF)
 Group           FF_KidsRoom             "Kinderzimmer"   <girl_3>          (Home, FF)
 Group           FF_Office               "Büro"           <office>          (Home, FF)
-Group           FF_LivingRoom           "Wohnzimmer"     <sofa>            (Home, FF)
+Group           LivingRoom              "Wohnzimmer"     <sofa>            (Home, FF)
 Group           FF_Kitchen              "Küche"          <kitchen>         (Home, FF)
 Group           FF_Bathroom             "Badezimmer"     <bath>            (Home, FF)
 Group           FF_Terrace              "Terrasse"       <terrace>         (Home, FF)
+
+String      Whg_Heating_Mode                "Wohnung Heizmodus [%s]"                    <heating>       (Home)
+Switch      Whg_Heating_UpdateHeater        "Sende Soll-Temperaturen an Heizkörper"     <heating>       (Home)

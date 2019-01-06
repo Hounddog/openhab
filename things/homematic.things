@@ -1,8 +1,7 @@
 Bridge homematic:bridge:ccu "Homematic Bridge" @ "Office" [ gatewayAddress="192.168.2.200" ]
 { 
-	//Thing HM-Sec-SCo          OEQ0433354   	"Fenster Kontakt" @ "Chayenne"
-        Thing HM-CC-RT-DN           OEQ0238393          "Thermostat" @ "LivingRoom"
-	Thing GATEWAY-EXTRAS-CCU    GWE00000000		"Gateway Extras"
-	Thing HmIP-BROLL	    0011170999EC7D      "Rolladen Schalter" @ "LivingRoom"
-	Thing HM-LC-Bl1PBU-FM	    OEQ0892543  	"Rolladen Schalter" @ "LivingRoom"
+    Thing HM-CC-RT-DN           	OEQ0238393		"Thermostat" @ "LivingRoom"
+	Thing GATEWAY-EXTRAS-CCU    	GWE00000000		"Gateway Extras"
+	Thing HmIP-BROLL	    		0011170999EC7D  "Rolladen Schalter" @ "LivingRoom"
+	Thing HM-LC-Bl1PBU-FM	    	OEQ0892543  	"Rolladen Schalter" @ "LivingRoom"
 }

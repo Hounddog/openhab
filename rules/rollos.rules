@@ -5,8 +5,8 @@ when
 then
     if (receivedCommand == ON)
     {
-        sendCommand(gShutter, UP)
+        sendCommand(Shutter_Group, UP)
     } else {
-        sendCommand(gShutter, DOWN)
+        sendCommand(Shutter_Group, DOWN)
     }
 end
