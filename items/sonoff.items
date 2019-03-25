@@ -1,0 +1,2 @@
+Switch LivingRoom_Light "Wohnzimmer Stehlampe" <light> (LivingRoom,gLight) ["Switchable"]  { mqtt=">[broker:cmnd/sonoff_AF72FD/POWER:command:*:default], <[broker:stat/sonoff_AF72FD/POWER:state:default]" }
+Switch Outside_light "Gartenbeleuchtung" <light> (Garden,gLight) ["Switchable"]  { mqtt=">[broker:cmnd/sonoff_DC527D/POWER:command:*:default], <[broker:stat/sonoff_DC527D/POWER:state:default]" }

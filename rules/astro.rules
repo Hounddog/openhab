@@ -1,4 +1,4 @@
-tring filename = "astro.rules"
+val String filename = "astro.rules"
 
 rule "OpenHAB system started - astro"
 when
@@ -26,6 +26,7 @@ then
         if (Night_State.state != ON) Night_State.postUpdate(ON)
     }
 end
+
 
 rule "Calculate time of day state"
 when
@@ -58,3 +59,4 @@ then
         Time_Of_Day.postUpdate(curr)
     }
 end
+

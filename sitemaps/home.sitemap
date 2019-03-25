@@ -5,6 +5,8 @@ sitemap home label="Home" {
                 Text item=THPS_TEMP label="Aktuelle Temperatur [%.1f °C]"
                 Default item=FF_LR_Shutter_Small label="Wohnzimmer Groß"
                 Default item=FF_LR_Shutter_Big label="Wohnzimmer Klein"
+                Switch item=LivingRoom_Light
+                
             }
         }
     }
@@ -69,5 +71,6 @@ sitemap home label="Home" {
     
     Frame label="Demo" {
         Group item=Shutter_Group
+        Switch item=Outside_light
     }
 }

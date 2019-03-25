@@ -1,0 +1,26 @@
+val String filename = "light.rules"
+
+rule "System started"
+when
+    System started
+then
+    createTimer(now.plusSeconds(180)) [ |
+        logInfo(filename, "light system started")
+    ]
+end
+
+
+rule "Gardenlight Timer"
+when
+    Item Outside_light received update
+then
+    logInfo(filename, "Gartenbeleuchtung: " + Outside_light.state )
+    if (Outside_light.state == ON)
+    {
+        createTimer(now.plusMinutes(5)) [ |
+            logInfo(filename, "Disable Gardenlight")
+            publish("broker", "cmnd/sonoff_DC527D/POWER", "OFF")
+            Outside_light.postUpdate("OFF")
+        ]
+    } 
+end

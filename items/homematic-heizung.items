@@ -9,6 +9,7 @@ Group                     Heating_OpModes        "Raumtemperaturen Mode [%.1f °
 Group:Number:AVG          Heating_TargetPresets  "Raumtemperaturen Soll Zeitprogramm [%.1f °C]" <line>            (Heating_Group)
 Group:Number:SUM          Heating_WindowModes    "Fensterabsenkung"                             <window>          (Heating_Group)
 
+Switch Fireplace					"Kamin"
 
 // HM-CC-RT-DN Heizkörperthermostat
 Number WZ_Heizung_RSSI              "WZ_Heizung RSSI [%d dBm]"                                  <"signal-3">      (Heating_WZ,RSSI_Group)               {channel="homematic:HM-CC-RT-DN:ccu:OEQ0238393:0#RSSI_DEVICE"}

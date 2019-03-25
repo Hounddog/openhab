@@ -10,3 +10,13 @@ then
         sendCommand(Shutter_Group, DOWN)
     }
 end
+
+rule "Night has started close Shutters"
+when
+    Item Night_State changed to ON
+then
+    createTimer(now.plusMinutes(60)) [ |
+        logInfo("RULE", "Closing Shutters for the Night!")
+         sendCommand(Shutter_Group, DOWN)
+    ]
+end

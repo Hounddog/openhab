@@ -1,15 +1,27 @@
 val String filename = "kamin.rules"
 
+rule "System started"
+when
+    System started
+then
+    createTimer(now.plusSeconds(180)) [ |
+        logInfo(filename, "Fireplace system started")
+        if (Fireplace.state == NULL) Fireplace.postUpdate("OFF")
+    ]
+end
+
 rule "Heizung schalten wenn kamin an/aus"
 when
     Item THPS_TEMP received update
 then
-	logInfo(filename, "Wohnzimmer temperatur: " + THPS_TEMP.state)
-	if (THPS_TEMP.state > 25)
+	logInfo(filename, "Wohnzimmer temperatur: " + THPS_TEMP.state + " Wohnzimmer Kamin: " + Fireplace.state)
+	if (THPS_TEMP.state > 25 && Fireplace.state == OFF)
     {
         WZ_Heizung_Manu.sendCommand(15.0)
+        Fireplace.postUpdate(ON)
         logInfo(filename, "Wohnzimmer Heizung aus")
-    } else {
+    } else if (THPS_TEMP.state < 25 && Fireplace.state == ON){
+    	Fireplace.postUpdate(OFF)
     	WZ_Heizung_Manu.sendCommand(21.0)
         logInfo(filename, "Wohnzimmer Heizung an")
     }
