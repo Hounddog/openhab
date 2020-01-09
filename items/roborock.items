@@ -1,0 +1,47 @@
+Group  gVac     "Xiaomi Robot Vacuum"      <fan>
+Group  gVacStat "Status Details"           <status> (gVac)
+Group  gVacCons "Consumables Usage"        <line-increase> (gVac)
+Group  gVacDND  "Do Not Disturb Settings"  <moon> (gVac)
+Group  gVacHist "Cleaning History"         <calendar> (gVac)
+Group  gVacNetwork "Network Details"       <network> (gVac)
+
+String actionControl  "Vacuum Control"     (gvac)      	{channel="miio:vacuum:roborock:actions#control" }
+Number actionFan      "Vacuum Fan"         (gVac)   	{channel="miio:vacuum:roborock:actions#fan" }
+String actionCommand  "Vacuum Command"          	{channel="miio:vacuum:roborock:actions#commands" }
+String actionZone "Zone [%s]"  <floor_plan>
+
+Switch actionZoneKitchen "Vacuum Kitchen" (gVac) ["Switchable"]
+Switch actionZoneChildroom "Vacuum Child Room" (gVac) ["Switchable"]
+Switch actionZoneLivingroom "Vacuum Living Room" (gVac) ["Switchable"]
+Switch actionZoneDiningroom "Vacuum Dining Room" (gVac) ["Switchable"]
+Switch actionZoneEntrance "Vacuum Entrance" (gVac) ["Switchable"]
+Switch actionZoneBathroom "Vacuum Bathroom" (gVac) ["Switchable"]
+Switch actionZoneGuestroom "Vacuum Guestroom" (gVac) ["Switchable"]
+Switch actionZoneMasterbedroom "Vacuum Master Bedroom" (gVac) ["Switchable"]
+Switch actionZoneOffice "Vacuum Office" (gVac) ["Switchable"]
+
+Number statusBat    "Battery Level [%1.0f%%]" <battery>   (gVac,gVacStat) {channel="miio:vacuum:roborock:status#battery" }
+Number statusArea    "Cleaned Area [%1.0fm?]" <zoom>   (gVac,gVacStat) {channel="miio:vacuum:roborock:status#clean_area" }
+Number statusTime    "Cleaning Time [%1.0f']" <clock>   (gVac,gVacStat) {channel="miio:vacuum:roborock:status#clean_time" }
+String statusError    "Error [%s]"  <error>  (gVac,gVacStat) {channel="miio:vacuum:roborock:status#error_code" }
+Number statusFanPow    "Fan Power [%1.0f%%]"  <signal>   (gVacStat) {channel="miio:vacuum:roborock:status#fan_power" } 
+Number statusClean    "In Cleaning Status [%1.0f]"   <switch>  (gVacStat) {channel="miio:vacuum:roborock:status#in_cleaning" }
+Switch statusDND    "DND Activated"    (gVacStat) {channel="miio:vacuum:roborock:status#dnd_enabled" }
+Number statusStatus    "Status [%1.0f]"  <status>  (gVacStat) {channel="miio:vacuum:roborock:status#state"} 
+
+Number consumableMainT    "Main Brush [%1.0f]"    (gVacCons) {channel="miio:vacuum:roborock:consumables#main_brush_time"}
+Number consumableMainP    "Main Brush [%1.0f%%]"    (gVacCons) {channel="miio:vacuum:roborock:consumables#main_brush_percent"}
+Number consumableSideT    "Side Brush [%1.0f]"    (gVacCons) {channel="miio:vacuum:roborock:consumables#side_brush_time"}
+Number consumableSideP    "Side Brush [%1.0f%%]"    (gVacCons) {channel="miio:vacuum:roborock:consumables#side_brush_percent"}
+Number consumableFilterT    "Filter Time[%1.0f]"    (gVacCons) {channel="miio:vacuum:roborock:consumables#filter_time" }
+Number consumableFilterP    "Filter Time[%1.0f%%]"    (gVacCons) {channel="miio:vacuum:roborock:consumables#filter_percent" }
+Number consumableSensorT    "Sensor [%1.0f]"    (gVacCons) {channel="miio:vacuum:roborock:consumables#sensor_dirt_time"}
+Number consumableSensorP    "Sensor [%1.0f%%]"    (gVacCons) {channel="miio:vacuum:roborock:consumables#sensor_dirt_percent"}
+
+Switch dndFunction   "DND Function" <moon>   (gVacDND) {channel="miio:vacuum:roborock:dnd#dnd_function"}
+String dndStart   "DND Start Time [%s]" <clock>   (gVacDND) {channel="miio:vacuum:roborock:dnd#dnd_start"}
+String dndEnd   "DND End Time [%s]"   <clock-on>  (gVacDND) {channel="miio:vacuum:roborock:dnd#dnd_end"}
+
+Number historyArea    "Total Cleaned Area [%1.0fm?]" <zoom>    (gVacHist) {channel="miio:vacuum:roborock:history#total_clean_area"}
+String historyTime    "Total Clean Time [%s]"   <clock>     (gVacHist) {channel="miio:vacuum:roborock:history#total_clean_time"}
+Number historyCount    "Total # Cleanings [%1.0f]"  <office>  (gVacHist) {channel="miio:vacuum:roborock:history#total_clean_count"}

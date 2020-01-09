@@ -1,0 +1,1 @@
+Thing miio:vacuum:roborock "Xiaomi Robot Vaccum Cleaner" @ "LivingRoom" [ host="192.168.2.116", token="6d7535596b556459725a4b6361663364", deviceId="0F948C5C" ]

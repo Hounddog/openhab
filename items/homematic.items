@@ -1,7 +1,6 @@
 Group:Rollershutter:OR(UP, DOWN)   Shutter_Group   "Rolladen"   <rollershutter>   (Home)
 Group:Contact:OR(OPEN, CLOSED)     Window_Group    "Fenster"    <window>          (Home)
 
-Rollershutter	FF_LR_Shutter_Small     "Kleines Wohnzimmer Rollo"	<rollershutter>   (LivingRoom, Shutter_Group)   ["Switchable"]   {channel="homematic:HmIP-BROLL:ccu:0011170999EC7D:4#LEVEL"}
-Rollershutter   FF_LR_Shutter_Big   	"Großes Wohnzimmer Rollo" 	<rollershutter>   (LivingRoom, Shutter_Group)   ["Switchable"]   {channel="homematic:HM-LC-Bl1PBU-FM:ccu:OEQ0892543:1#LEVEL"}
-
-Switch Rollos "Shutters" [ "Lighting" ]
+Group FF_LR_Shutters "Wohnzimmer Rollos" (LivingRoom, Shutter_Group) {alexa="PercentageController.percentage"}
+Rollershutter FF_LR_Shutter_Small "Kleines Wohnzimmer Rollo" <rollershutter>  (FF_LR_Shutters) { channel="homematic:HmIP-BROLL:ccu:0011170999EC7D:4#LEVEL" }
+Rollershutter FF_LR_Shutter_Big "Großes Wohnzimmer Rollo" <rollershutter>  (FF_LR_Shutters) { channel="homematic:HM-LC-Bl1PBU-FM:ccu:OEQ0892543:1#LEVEL" }

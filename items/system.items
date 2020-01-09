@@ -3,6 +3,7 @@ Group           Home                    "Home"           <house>
 
 Group           GF                      "Erdgeschoss"    <groundfloor>     (Home)
 Group           FF                      "Erster Stock"   <firstfloor>      (Home)
+Group           Garden                  "Garten"   		 <garden>      	   (Home)
 
 Group           GF_Bedroom              "Schlafzimmer"   <bedroom>         (Home, GF)
 Group           GF_LivingRoom           "Wohnzimmer"     <sofa>            (Home, GF)

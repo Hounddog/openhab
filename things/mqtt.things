@@ -1,0 +1,17 @@
+Bridge mqtt:broker:mosquitto "Mosquitto" [ host="raspberrypi", secure=false, clientID="openHAB2"]
+{
+	// Sonoffs
+    Thing topic sonoffsDC527D "Gartenbeleuchtung" @ "Garden" {
+    Channels:
+        Type string : reachable "Reachable"            [ stateTopic="tele/sonoff_DC527D/LWT" ]
+        Type switch : power     "Power"                [ stateTopic="stat/sonoff_DC527D/POWER", commandTopic="cmnd/sonoff_DC527D/POWER" ]
+        Type number : rssi      "WiFi Signal Strength" [ stateTopic="tele/sonoff_DC527D/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+    
+    Thing topic sonoffsAF72FD "Wohnzimmer Stehlampe" @ "LivingRoom" {
+    Channels:
+        Type string : reachable "Reachable"            [ stateTopic="tele/sonoff_AF72FD/LWT" ]
+        Type switch : power     "Power"                [ stateTopic="stat/sonoff_AF72FD/POWER", commandTopic="cmnd/sonoff_AF72FD/POWER" ]
+        Type number : rssi      "WiFi Signal Strength" [ stateTopic="tele/sonoff_AF72FD/STATE", transformationPattern="JSONPATH:$.Wifi.RSSI"]
+    }
+}

@@ -1,0 +1,2 @@
+Switch              Amazfit              "Amazfit Stratos "            <workforce>   (EG_Buro,gNet)    {channel="network:pingdevice:Amazfit:online"}
+Switch		    Samsung		 "Samsung" 					 <workforce>   (EG_Buro,gNet)    {channel="network:pingdevice:Samsung:online"}

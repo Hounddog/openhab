@@ -1,0 +1,2 @@
+Thing network:pingdevice:Amazfit     [ hostname="192.168.2.148", retry=1, timeout=5000, refreshInterval=60000 ]
+Thing network:pingdevice:Samsung     [ hostname="192.168.2.101"]

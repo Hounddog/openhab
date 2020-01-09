@@ -1,2 +1,21 @@
-Switch LivingRoom_Light "Wohnzimmer Stehlampe" <light> (LivingRoom,gLight) ["Switchable"]  { mqtt=">[broker:cmnd/sonoff_AF72FD/POWER:command:*:default], <[broker:stat/sonoff_AF72FD/POWER:state:default]" }
-Switch Outside_light "Gartenbeleuchtung" <light> (Garden,gLight) ["Switchable"]  { mqtt=">[broker:cmnd/sonoff_DC527D/POWER:command:*:default], <[broker:stat/sonoff_DC527D/POWER:state:default]" }
+Group                     			Light_Group          "Licht Gesamt"                               <light>         (Home)
+Group                     			Light_WZ             "Licht Wohnzimmer"                           <light>         (Light_Group, LivingRoom)
+// Garden Light
+Group  Sonoff_DC527D           		"Sonoff DC527D"                     <sonoff_DC527D_uk> 	(FF_Terrace, glight, Sonoff_DC527D)
+String Sonoff_DC527D_Reachable 		"Reachable: [%s]"                   <contactable>   	(Sonoff_DC527D) { channel="mqtt:topic:mosquitto:sonoffsDC527D:reachable" }
+Switch Sonoff_DC527D_Power     		"Power"                 			<light> 			(FF_Terrace, Sonoff_DC527D) { channel="mqtt:topic:mosquitto:sonoffsDC527D:power" }       
+Number Sonoff_DC527D_RSSI      		"WiFi Signal Strength [%d %%]"      <wifi>          	(Sonoff_DC527D) { channel="mqtt:topic:mosquitto:sonoffsDC527D:rssi" }
+
+//Living Room Standing Light
+Group  Sonoff_AF72FD           		"Wohnzimmer Stehlampe"              <sonoff_AF72FD_uk> 	(Light_WZ, glight, Sonoff_AF72FD)
+String Sonoff_AF72FD_Reachable 		"Reachable: [%s]"                   <contactable>   	(Sonoff_AF72FD) 					{ channel="mqtt:topic:mosquitto:sonoffsAF72FD:reachable" }
+Switch Sonoff_AF72FD_Power     		"Power"              				<light> 			(Sonoff_AF72FD) 		{ channel="mqtt:topic:mosquitto:sonoffsAF72FD:power" }       
+Number Sonoff_AF72FD_RSSI      		"WiFi Signal Strength [%d %%]"      <wifi>          	(Sonoff_AF72FD) 					{ channel="mqtt:topic:mosquitto:sonoffsAF72FD:rssi" }
+
+
+//Alexa Connection
+Switch LivingRoom_Light "Wohnzimmer Stehlampe" <light> (LivingRoom,gLight) ["Switchable"]  { channel="mqtt:topic:mosquitto:sonoffsAF72FD:power" }
+Switch Outside_light "Gartenbeleuchtung" <light> (Garden,gLight) ["Switchable"]  { channel="mqtt:topic:mosquitto:sonoffsDC527D:power" }
+
+//Switch LivingRoom_Light "Wohnzimmer Stehlampe" <light> (LivingRoom,gLight) ["Switchable"]  { mqtt=">[broker:cmnd/sonoff_AF72FD/POWER:command:*:default], <[broker:stat/sonoff_AF72FD/POWER:state:default]" }
+//Switch Outside_light "Gartenbeleuchtung" <light> (Garden,gLight) ["Switchable"]  { mqtt=">[mosquitto:cmnd/sonoff_DC527D/POWER:command:*:default], <[broker:stat/sonoff_DC527D/POWER:state:default]" }

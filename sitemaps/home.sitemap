@@ -71,6 +71,22 @@ sitemap home label="Home" {
     
     Frame label="Demo" {
         Group item=Shutter_Group
-        Switch item=Outside_light
+        Switch item=Sonoff_DC527D_Power
     }
+
+   Frame label="Vacuum" {
+   	Group item=gVac {
+		Switch item=actionControl mappings=[vacuum="Vacuum", pause="Pause",spot="Spot", dock="Dock"]
+                Switch item=actionZone mappings=[kitchen="kitchen", diningroom="diningroom"]
+ 		Switch item=actionFan mappings=[38="Silent", 60="Normal", 77="Power",90="Full", -1="Custom"]
+		Default item=statusBat 
+		Default item=statusArea 
+		Default item=statusTime 
+		Group  item=gVacStat
+		Group  item=gVacCons
+		Group  item=gVacDND
+		Group  item=gVacHist
+		Group  item=gVacNetwork
+	}
+   }
 }

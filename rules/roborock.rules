@@ -1,0 +1,86 @@
+// Logging name tag
+val logName = "Vacuum"
+
+rule "Vacuum control"
+when
+  Item actionZone received command
+then
+    logInfo(logName, "Vacuum command: {}", receivedCommand.toString)
+    //if (Vacuum_Status_Status.state == "Charging") {
+        // Get zone coordinates
+        val zone = transform("MAP", "zones.map", receivedCommand.toString)
+        // Make sure we have zone parameters
+        if (zone != "") {
+          logInfo(logName, "Zones: {}", zone)
+	  actionCommand.sendCommand('app_zoned_clean[[' + zone + ']]') 
+        }
+    //}
+end
+
+rule "Vacuum Kitchen"
+when
+    Item actionZoneKitchen received command
+then
+    actionZone.sendCommand('kitchen')
+end
+
+rule "Vacuum Children Room"
+when 
+    Item actionZoneChildroom received command
+then 
+    actionZone.sendCommand("childroom")
+end
+
+rule "Vacuum Entrance"
+when
+    Item actionZoneEntrance received command
+then 
+   actionZone.sendCommand("entrance")
+end
+
+rule "Vacuum Living Room"
+when
+    Item actionZoneLivingroom received command
+then
+    actionZone.sendCommand("livingroom")
+end
+
+rule "Vacuum Dining Room"
+when
+    Item actionZoneDiningroom received command
+then
+    actionZone.sendCommand("diningroom")
+end
+
+rule "Vacuum Bathroom"
+when
+    Item actionZoneBathroom received command
+then
+    actionZone.sendCommand("bathroom")
+end
+
+rule "Vacuum Guest Room"
+when
+    Item actionZoneGuestroom received command
+then
+    actionZone.sendCommand("guestroom")
+end
+
+
+rule "Vacuum office"
+when 
+    Item actionZoneOffice received command
+then
+   actionZone.sendCommand("office")
+end
+
+rule "Vacuum Master Bedroom"
+when
+    Item actionZoneMasterbedroom received command
+then
+   actionZone.sendCommand("masterbedroom")
+end
+
+
+
+

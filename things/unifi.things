@@ -1,0 +1,3 @@
+Bridge unifi:controller:home "UniFi Controller" [ host="localhost", port=8443, username="MShwalbe", password="Aiden1613368871", refresh=10 ] {
+	Thing wirelessClient martinsWatch "Martins Watch" [ cid="8c:b8:4a:87:17:22", site="default", considerHome=180 ]
+}
